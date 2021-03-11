@@ -32,13 +32,17 @@ defmodule Youtex.TranscriptListFetcher do
   defp extract_captions_json({:ok, html}) do
     html
     |> String.split("\"captions\":")
-    # |> handle when <= 1
     |> Enum.fetch!(1)
     |> String.split(",\"videoDetails")
     |> Enum.fetch!(0)
     |> String.replace("\n", "")
+    |> Poison.decode()
+    |> get_captions()
     |> IO.inspect()
   end
+
+  defp get_captions({:ok, %{"playerCaptionsTracklistRenderer" => %{"captionTracks" => _} = captions}}), do: captions
+  defp get_captions(_), do: %{}
 end
 
 # Youtex.TranscriptListFetcher.fetch("eoarCqVSJPQ")
