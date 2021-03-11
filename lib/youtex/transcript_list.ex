@@ -24,6 +24,11 @@ defmodule Youtex.TranscriptList do
   @spec find_for_language(t, language) :: Transcript.t() | nil
   def find_for_language(%__MODULE__{items: transcripts}, language) do
     transcripts
+    |> Enum.sort_by(fn
+      %Transcript{generated: true} -> 1
+      %Transcript{generated: false} -> -1
+    end)
+    |> IO.inspect
     |> Enum.filter(&(&1.language_code == language))
     |> List.first()
   end
