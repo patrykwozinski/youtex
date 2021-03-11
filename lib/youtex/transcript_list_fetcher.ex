@@ -4,6 +4,8 @@ defmodule Youtex.TranscriptListFetcher do
   alias HTTPoison.Error
   alias HTTPoison.Response
 
+  alias Youtex.TranscriptList
+
   @watch_url "https://www.youtube.com/watch?v="
 
   @type video_id :: String.t()
@@ -12,6 +14,7 @@ defmodule Youtex.TranscriptListFetcher do
   def fetch(video_id) do
     fetch_html(video_id)
     |> extract_captions_json()
+    |> TranscriptList.build(video_id)
   end
 
   defp fetch_html(video_id) do
