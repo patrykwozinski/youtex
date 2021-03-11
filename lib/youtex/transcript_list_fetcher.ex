@@ -4,6 +4,7 @@ defmodule Youtex.TranscriptListFetcher do
   alias HTTPoison.Error
   alias HTTPoison.Response
 
+  alias Youtex.HttpClient
   alias Youtex.TranscriptList
 
   @watch_url "https://www.youtube.com/watch?v="
@@ -18,19 +19,8 @@ defmodule Youtex.TranscriptListFetcher do
   end
 
   defp fetch_html(video_id) do
-    HTTPoison.get(@watch_url <> video_id)
-    |> handle_response()
+    HttpClient.get(@watch_url <> video_id)
   end
-
-  defp handle_response({:ok, %Response{status_code: code, body: body}}) when code == 200,
-    do: {:ok, body}
-
-  defp handle_response({:ok, %Response{status_code: code}}) when code == 404,
-    do: {:error, :not_found}
-
-  defp handle_response({:error, %Error{reason: reason}}), do: {:error, reason}
-
-  defp handle_response(response), do: {:error, response}
 
   defp extract_captions_json({:ok, html}) do
     html
