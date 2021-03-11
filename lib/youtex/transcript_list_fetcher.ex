@@ -22,7 +22,13 @@ defmodule Youtex.TranscriptListFetcher do
   defp extract_captions_json({:ok, html}) do
     html
     |> String.split("\"captions\":")
-    # |> handle when <= 1 -> possible captcha there
+    |> extract_details()
+  end
+
+  defp extract_captions_json(_), do: %{}
+
+  defp extract_details(raw_captions) when length(raw_captions) > 1 do
+    raw_captions
     |> Enum.fetch!(1)
     |> String.split(",\"videoDetails")
     |> Enum.fetch!(0)
@@ -31,7 +37,7 @@ defmodule Youtex.TranscriptListFetcher do
     |> get_captions()
   end
 
-  defp extract_captions_json(_), do: %{}
+  defp extract_details(_raw_captions), do: %{}
 
   defp get_captions(
          {:ok, %{"playerCaptionsTracklistRenderer" => %{"captionTracks" => _} = captions}}
