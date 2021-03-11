@@ -3,10 +3,10 @@ defmodule Youtex do
 
   @type video_id :: String.t()
   @type transcription :: %{
-    required(:text) => String.t(),
-    required(:start) => float,
-    required(:duration) => float
-  }
+          required(:text) => String.t(),
+          required(:start) => float,
+          required(:duration) => float
+        }
 
   @spec list_transcripts(video_id) :: :ok
   def list_transcripts(video_id) do
