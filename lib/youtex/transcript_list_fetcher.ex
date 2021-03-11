@@ -41,6 +41,8 @@ defmodule Youtex.TranscriptListFetcher do
     |> IO.inspect()
   end
 
+  defp extract_captions_json(_), do: %{}
+
   defp get_captions({:ok, %{"playerCaptionsTracklistRenderer" => %{"captionTracks" => _} = captions}}), do: captions
   defp get_captions(_), do: %{}
 end
