@@ -13,7 +13,7 @@ defmodule Youtex do
     :ok
   end
 
-  @spec get_transcription(video_id) :: {:ok, transcription} | {:error, :not_found}
+  @spec get_transcription(video_id) :: {:ok, [transcription]} | {:error, :not_found}
   def get_transcription(_video_id) do
     :ok
   end
