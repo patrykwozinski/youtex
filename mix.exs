@@ -21,6 +21,7 @@ defmodule Youtex.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:elixir_xml_to_map, "~> 2.0"},
       {:poison, "~> 3.1"},
       {:httpoison, "~> 1.8"}
       # {:dep_from_hexpm, "~> 0.3.0"},
