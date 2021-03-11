@@ -8,8 +8,14 @@ defmodule Youtex.TranscriptList do
 
   @spec build(map, video_id) :: t
   def build(captions, video_id) do
-    translation_languages = for %{"languageCode" => code, "languageName" => %{"simpleText" => name}} <- Map.get(captions, "translationLanguages") do
+    languages = captions |> translation_languages()
+  end
+
+  defp translation_languages(%{"translationLanguages" => languages}) do
+    for %{"languageCode" => code, "languageName" => %{"simpleText" => name}} <- languages do
       %{code: code, name: name}
     end
   end
+
+  defp translation_languages(_), do: []
 end
