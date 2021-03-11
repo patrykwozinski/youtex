@@ -2,6 +2,7 @@ defmodule Youtex.Transcript do
   @moduledoc false
 
   alias Youtex.HttpClient
+  alias Youtex.TranscriptParser
 
   @enforce_keys [:video_id, :url, :name, :language_code, :generated]
   defstruct [:video_id, :url, :name, :language_code, :generated]
@@ -40,6 +41,6 @@ defmodule Youtex.Transcript do
   @spec fetch(t) :: Youtex.transcription
   def fetch(transcript) do
     HttpClient.get(transcript.url)
-    |> IO.inspect()
+    |> TranscriptParser.parse()
   end
 end
