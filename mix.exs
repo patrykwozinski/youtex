@@ -14,7 +14,8 @@ defmodule Youtex.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger]
+      applications: [:elixir_xml_to_map],
+      extra_applications: [:logger, :poison, :httpoison]
     ]
   end
 
