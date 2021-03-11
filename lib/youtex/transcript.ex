@@ -12,6 +12,7 @@ defmodule Youtex.Transcript do
           required(:generated) => boolean
         }
 
+  @spec build(map, integer) :: t
   def build(caption, video_id) do
     %__MODULE__{
       video_id: video_id,
