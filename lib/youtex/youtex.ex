@@ -8,7 +8,7 @@ defmodule Youtex do
     required(:duration) => float
   }
 
-  @spec list_transcripts(video_id)
+  @spec list_transcripts(video_id) :: :ok
   def list_transcripts(_video_id) do
     :ok
   end
