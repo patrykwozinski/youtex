@@ -10,7 +10,7 @@ defmodule Youtex.TranscriptListFetcher do
 
   @type video_id :: String.t()
 
-  @spec fetch(video_id) :: :ok
+  @spec fetch(video_id) :: TranscriptList.t()
   def fetch(video_id) do
     fetch_html(video_id)
     |> extract_captions_json()
@@ -53,5 +53,3 @@ defmodule Youtex.TranscriptListFetcher do
 
   defp get_captions(_), do: %{}
 end
-
-# Youtex.TranscriptListFetcher.fetch("eoarCqVSJPQ")

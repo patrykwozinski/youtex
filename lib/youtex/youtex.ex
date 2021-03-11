@@ -11,6 +11,8 @@ defmodule Youtex do
   @spec list_transcripts(video_id) :: :ok
   def list_transcripts(video_id) do
     Youtex.TranscriptListFetcher.fetch(video_id)
+
+    :ok
   end
 
   @spec get_transcription(video_id) :: {:ok, [transcription]} | {:error, :not_found}
