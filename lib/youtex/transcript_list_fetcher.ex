@@ -42,7 +42,6 @@ defmodule Youtex.TranscriptListFetcher do
     |> String.replace("\n", "")
     |> Poison.decode()
     |> get_captions()
-    |> IO.inspect()
   end
 
   defp extract_captions_json(_), do: %{}
