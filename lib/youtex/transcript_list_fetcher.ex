@@ -1,9 +1,6 @@
 defmodule Youtex.TranscriptListFetcher do
   @moduledoc false
 
-  alias HTTPoison.Error
-  alias HTTPoison.Response
-
   alias Youtex.HttpClient
   alias Youtex.TranscriptList
 

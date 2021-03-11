@@ -1,6 +1,9 @@
 defmodule Youtex.HttpClient do
   @moduledoc false
 
+  alias HTTPoison.Error
+  alias HTTPoison.Response
+
   @spec get(String.t()) :: {:ok, any} | {:error, any}
   def get(url) do
     HTTPoison.get(url)
