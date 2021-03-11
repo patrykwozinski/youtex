@@ -22,4 +22,6 @@ defmodule Youtex.TranscriptParser do
       duration: Float.parse(duration)
     }
   end
+
+  defp to_transcript(_other_format), do: %{}
 end
