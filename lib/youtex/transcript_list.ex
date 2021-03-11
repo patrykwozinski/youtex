@@ -17,4 +17,6 @@ defmodule Youtex.TranscriptList do
 
     %__MODULE__{items: transcripts}
   end
+
+  def build(_captions, _video_id), do: %__MODULE__{items: []}
 end
