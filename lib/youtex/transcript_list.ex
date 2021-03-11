@@ -21,14 +21,10 @@ defmodule Youtex.TranscriptList do
 
   def build(_captions, _video_id), do: %__MODULE__{items: []}
 
-  @spec find_for_language(t, language) :: {:ok, Transcript.t()} | {:error, :not_found}
+  @spec find_for_language(t, language) :: Transcript.t() | nil
   def find_for_language(%__MODULE__{items: transcripts}, language) do
     transcripts
     |> Enum.filter(&(&1.language_code == language))
     |> List.first()
-    |> cond do
-      nil -> {:error, :not_found}
-      transcript -> {:ok, transcript}
-    end
   end
 end
