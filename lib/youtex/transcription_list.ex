@@ -1,4 +1,5 @@
 defmodule Youtex.TranscriptList do
+  @enforce_keys [:items]
   defstruct [:items]
 
   @type t :: %__MODULE__{
@@ -7,15 +8,10 @@ defmodule Youtex.TranscriptList do
   @type video_id :: String.t()
 
   @spec build(map, video_id) :: t
-  def build(captions, video_id) do
-    languages = captions |> translation_languages()
-  end
+  def build(%{"captionTracks" => captions}, video_id) do
+    transcripts = captions
+    |> Enum.map()
 
-  defp translation_languages(%{"translationLanguages" => languages}) do
-    for %{"languageCode" => code, "languageName" => %{"simpleText" => name}} <- languages do
-      %{code: code, name: name}
-    end
+    %__MODULE__{items: transcripts}
   end
-
-  defp translation_languages(_), do: []
 end
