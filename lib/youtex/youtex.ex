@@ -1,6 +1,8 @@
 defmodule Youtex do
   @moduledoc false
 
+  alias Youtex.Transcript
+
   @type video_id :: String.t()
   @type transcription :: %{
           required(:text) => String.t(),
@@ -11,6 +13,8 @@ defmodule Youtex do
   @spec list_transcripts(video_id) :: :ok
   def list_transcripts(video_id) do
     Youtex.TranscriptListFetcher.fetch(video_id)
+    |> Map.fetch!(:items)
+    |> Enum.each(&Transcript.fetch(&1))
 
     :ok
   end
@@ -20,3 +24,5 @@ defmodule Youtex do
     :ok
   end
 end
+
+# Youtex.list_transcripts("eoarCqVSJPQ")
