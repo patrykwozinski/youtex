@@ -1,18 +1,11 @@
 defmodule Youtex do
-  @moduledoc """
-  Documentation for `Youtex`.
-  """
+  @moduledoc false
 
-  @doc """
-  Hello world.
+  def list_transcripts(_video_id) do
+    :ok
+  end
 
-  ## Examples
-
-      iex> Youtex.hello()
-      :world
-
-  """
-  def hello do
-    :world
+  def get_transcription(_video_id) do
+    :ok
   end
 end
