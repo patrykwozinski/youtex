@@ -1,4 +1,6 @@
 defmodule Youtex.TranscriptList do
+  @moduledoc false
+
   @enforce_keys [:items]
   defstruct [:items]
 
