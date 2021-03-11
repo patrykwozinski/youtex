@@ -31,5 +31,3 @@ defmodule Youtex do
     end
   end
 end
-
-# Youtex.get_transcription("eoarCqVSJPQ")
