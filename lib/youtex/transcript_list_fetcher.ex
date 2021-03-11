@@ -32,6 +32,7 @@ defmodule Youtex.TranscriptListFetcher do
   defp extract_captions_json({:ok, html}) do
     html
     |> String.split("\"captions\":")
+    # |> handle when <= 1 -> possible captcha there
     |> Enum.fetch!(1)
     |> String.split(",\"videoDetails")
     |> Enum.fetch!(0)
