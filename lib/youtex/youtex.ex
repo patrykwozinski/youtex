@@ -22,7 +22,7 @@ defmodule Youtex do
 
   @spec get_transcription(video_id, language) :: {:ok, [transcription]} | {:error, :not_found}
   def get_transcription(video_id, language \\ @default_language) do
-    with transcript_list <- TranscriptListFetcher.fetch(video_id),
+    with transcript_list <- list_transcripts(video_id),
          transcript when transcript != nil <-
            TranscriptList.find_for_language(transcript_list, language) do
       {:ok, Transcript.fetch(transcript)}
