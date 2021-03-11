@@ -1,7 +1,7 @@
 defmodule Youtex do
   @moduledoc false
 
-  @type video_id :: integer
+  @type video_id :: String.t()
   @type transcription :: %{
     required(:text) => String.t(),
     required(:start) => float,
