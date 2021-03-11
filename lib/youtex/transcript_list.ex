@@ -28,7 +28,6 @@ defmodule Youtex.TranscriptList do
       %Transcript{generated: true} -> 1
       %Transcript{generated: false} -> -1
     end)
-    |> IO.inspect
     |> Enum.filter(&(&1.language_code == language))
     |> List.first()
   end
