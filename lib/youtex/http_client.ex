@@ -11,7 +11,7 @@ defmodule Youtex.HttpClient do
   end
 
   defp handle_response({:ok, %Response{status_code: code, body: body}}) when code == 200,
-  do: {:ok, body}
+    do: {:ok, body}
 
   defp handle_response({:ok, %Response{status_code: code}}) when code == 404,
     do: {:error, :not_found}

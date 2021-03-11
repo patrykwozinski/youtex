@@ -38,7 +38,7 @@ defmodule Youtex.Transcript do
   defp generated(%{"kind" => kind}), do: kind == "asr"
   defp generated(_caption), do: false
 
-  @spec fetch(t) :: Youtex.transcription
+  @spec fetch(t) :: Youtex.transcription()
   def fetch(transcript) do
     HttpClient.get(transcript.url)
     |> TranscriptParser.parse()
