@@ -2,7 +2,11 @@ defmodule Youtex do
   @moduledoc false
 
   @type video_id :: integer
-  @type transcription :: %{}
+  @type transcription :: %{
+    required(:text) => String.t(),
+    required(:start) => float,
+    required(:duration) => float
+  }
 
   @spec list_transcripts(video_id)
   def list_transcripts(_video_id) do
