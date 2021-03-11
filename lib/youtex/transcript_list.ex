@@ -26,5 +26,9 @@ defmodule Youtex.TranscriptList do
     transcripts
     |> Enum.filter(&(&1.language_code == language))
     |> List.first()
+    |> cond do
+      nil -> {:error, :not_found}
+      transcript -> {:ok, transcript}
+    end
   end
 end

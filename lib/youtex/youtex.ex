@@ -22,14 +22,14 @@ defmodule Youtex do
 
   @spec get_transcription(video_id, language) :: {:ok, [transcription]} | {:error, :not_found}
   def get_transcription(video_id, language \\ @default_language) do
-    video_id
-    |> TranscriptListFetcher.fetch()
-    |> TranscriptList.find_for_language(language)
-    |> Enum.map(&Transcript.fetch(&1))
-    |> IO.inspect()
+    transcriptions =
+      video_id
+      |> TranscriptListFetcher.fetch()
+      |> TranscriptList.find_for_language(language)
+      |> Transcript.fetch()
 
     :ok
   end
 end
 
-# Youtex.list_transcripts("eoarCqVSJPQ")
+# Youtex.get_transcription("eoarCqVSJPQ")
