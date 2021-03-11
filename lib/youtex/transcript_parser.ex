@@ -16,10 +16,13 @@ defmodule Youtex.TranscriptParser do
   defp raw_transcripts(%{"transcript" => %{"text" => transcripts}}), do: transcripts
 
   defp to_transcript(%{"#content" => text, "-start" => start, "-dur" => duration}) do
+    {start, _} = Float.parse(start)
+    {duration, _} = Float.parse(duration)
+
     %{
       text: text,
-      start: String.to_float(start),
-      duration: String.to_float(duration)
+      start: start,
+      duration: duration
     }
   end
 
