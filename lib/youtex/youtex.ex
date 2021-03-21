@@ -5,13 +5,16 @@ defmodule Youtex do
   alias Youtex.TranscriptList
   alias Youtex.TranscriptListFetcher
 
+  use TypedStruct
+
+  typedstruct enforce: true do
+    field :text, String.t()
+    field :start, float()
+    field :duration, float()
+  end
+
   @type video_id :: String.t()
   @type language :: String.t()
-  @type transcription :: %{
-          required(:text) => String.t(),
-          required(:start) => float,
-          required(:duration) => float
-        }
 
   @default_language "en"
 
