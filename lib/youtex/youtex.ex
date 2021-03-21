@@ -18,12 +18,12 @@ defmodule Youtex do
 
   @default_language "en"
 
-  @spec list_transcripts(video_id) :: TranscriptList
+  @spec list_transcripts(video_id) :: TranscriptList.t()
   def list_transcripts(video_id) do
     TranscriptListFetcher.fetch(video_id)
   end
 
-  @spec get_transcription(video_id, language) :: {:ok, [transcription]} | {:error, :not_found}
+  @spec get_transcription(video_id, language) :: {:ok, [t()]} | {:error, :not_found}
   def get_transcription(video_id, language \\ @default_language) do
     with transcript_list <- list_transcripts(video_id),
          transcript when transcript != nil <-
