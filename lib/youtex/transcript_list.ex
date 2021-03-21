@@ -3,12 +3,12 @@ defmodule Youtex.TranscriptList do
 
   alias Youtex.Transcript
 
-  @enforce_keys [:items]
-  defstruct [:items]
+  use TypedStruct
 
-  @type t :: %__MODULE__{
-          items: [Transcription.t()]
-        }
+  typedstruct do
+    field :items, [Transcript.t()], enforce: true
+  end
+
   @type video_id :: String.t()
   @type language :: String.t()
 
