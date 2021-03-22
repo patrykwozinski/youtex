@@ -2,15 +2,12 @@ defmodule Youtex.TranscriptList do
   @moduledoc false
 
   alias Youtex.Transcript
-
+  use Youtex.Types
   use TypedStruct
 
   typedstruct do
     field :items, [Transcript.t()], enforce: true
   end
-
-  @type video_id :: String.t()
-  @type language :: String.t()
 
   @spec build(map, video_id) :: t
   def build(%{"captionTracks" => captions}, video_id) do

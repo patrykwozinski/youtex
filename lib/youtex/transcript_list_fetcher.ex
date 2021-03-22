@@ -1,14 +1,13 @@
 defmodule Youtex.TranscriptListFetcher do
   @moduledoc false
 
+  use Youtex.Types
   alias Youtex.HttpClient
   alias Youtex.TranscriptList
 
   @watch_url "https://www.youtube.com/watch?v="
 
-  @type video_id :: String.t()
-
-  @spec fetch(video_id) :: TranscriptList.t()
+  @spec fetch(video_id()) :: TranscriptList.t()
   def fetch(video_id) do
     fetch_html(video_id)
     |> extract_captions_json()

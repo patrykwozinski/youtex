@@ -5,6 +5,7 @@ defmodule Youtex do
   alias Youtex.TranscriptList
   alias Youtex.TranscriptListFetcher
 
+  use Youtex.Types
   use TypedStruct
 
   typedstruct enforce: true do
@@ -12,9 +13,6 @@ defmodule Youtex do
     field :start, float()
     field :duration, float()
   end
-
-  @type video_id :: String.t()
-  @type language :: String.t()
 
   @default_language "en"
 

@@ -4,17 +4,18 @@ defmodule Youtex.Transcript do
   alias Youtex.HttpClient
   alias Youtex.TranscriptParser
 
+  use Youtex.Types
   use TypedStruct
 
   typedstruct enforce: true do
-    field :video_id, String.t()
+    field :video_id, video_id()
     field :url, String.t()
     field :name, String.t()
-    field :language_code, String.t()
+    field :language_code, language()
     field :generated, boolean()
   end
 
-  @spec build(map, integer) :: t
+  @spec build(map, video_id) :: t
   def build(caption, video_id) do
     %__MODULE__{
       video_id: video_id,
