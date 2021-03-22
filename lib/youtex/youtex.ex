@@ -18,7 +18,7 @@ defmodule Youtex do
 
   @default_language "en"
 
-  @spec list_transcripts(video_id) :: TranscriptList
+  @spec list_transcripts(video_id) :: TranscriptList.t()
   def list_transcripts(video_id) do
     TranscriptListFetcher.fetch(video_id)
   end

@@ -1,7 +1,7 @@
 defmodule Youtex.TranscriptParser do
   @moduledoc false
 
-  @spec parse(String.t()) :: [Youtex.transcription()]
+  @spec parse({:error, any()} | {:ok, String.t()}) :: [Youtex.t()]
   def parse({:ok, plain_data}) do
     plain_data
     |> xml_to_map()
