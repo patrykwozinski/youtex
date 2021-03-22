@@ -9,19 +9,19 @@ defmodule Youtex do
   use TypedStruct
 
   typedstruct enforce: true do
-    field :text, String.t()
-    field :start, float()
-    field :duration, float()
+    field :text, String.t
+    field :start, float
+    field :duration, float
   end
 
   @default_language "en"
 
-  @spec list_transcripts(video_id) :: TranscriptList.t()
+  @spec list_transcripts(video_id) :: TranscriptList.t
   def list_transcripts(video_id) do
     TranscriptListFetcher.fetch(video_id)
   end
 
-  @spec get_transcription(video_id, language) :: {:ok, [t()]} | {:error, :not_found}
+  @spec get_transcription(video_id, language) :: success | error
   def get_transcription(video_id, language \\ @default_language) do
     with transcript_list <- list_transcripts(video_id),
          transcript when transcript != nil <-
@@ -32,7 +32,7 @@ defmodule Youtex do
     end
   end
 
-  @spec get_transcription!(video_id, language) :: [t()]
+  @spec get_transcription!(video_id, language) :: [t]
   def get_transcription!(video_id, language \\ @default_language) do
     case get_transcription(video_id, language) do
       {:ok, transcription} -> transcription

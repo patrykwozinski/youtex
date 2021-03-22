@@ -6,7 +6,7 @@ defmodule Youtex.TranscriptList do
   use TypedStruct
 
   typedstruct do
-    field :items, [Transcript.t()], enforce: true
+    field :items, [Transcript.t], enforce: true
   end
 
   @spec build(map, video_id) :: t
@@ -18,7 +18,7 @@ defmodule Youtex.TranscriptList do
 
   def build(_captions, _video_id), do: %__MODULE__{items: []}
 
-  @spec find_for_language(t, language) :: Transcript.t() | nil
+  @spec find_for_language(t, language) :: Transcript.t | nil
   def find_for_language(%__MODULE__{items: transcripts}, language) do
     transcripts
     |> Enum.sort_by(fn

@@ -7,7 +7,7 @@ defmodule Youtex.TranscriptListFetcher do
 
   @watch_url "https://www.youtube.com/watch?v="
 
-  @spec fetch(video_id()) :: TranscriptList.t()
+  @spec fetch(video_id) :: TranscriptList.t
   def fetch(video_id) do
     fetch_html(video_id)
     |> extract_captions_json()
