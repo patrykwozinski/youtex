@@ -1,29 +1,33 @@
 defmodule Youtex.Transcript do
   @moduledoc false
 
-  alias Youtex.HttpClient
-  alias Youtex.TranscriptParser
-
   use Youtex.Types
   use TypedStruct
 
   typedstruct enforce: true do
-    field :video_id, video_id
     field :url, String.t
     field :name, String.t
     field :language_code, language
     field :generated, boolean
+    field :sentences, sentence_list, default: []
   end
 
-  @spec build(map, video_id) :: t
-  def build(caption, video_id) do
+  @spec new(map) :: t
+  def new(caption) do
     %__MODULE__{
-      video_id: video_id,
       url: url(caption),
       name: name(caption),
       language_code: language_code(caption),
-      generated: generated(caption)
+      generated: generated(caption),
     }
+  end
+
+  @spec for_language(transcript_list, language) :: transcript_found | error
+  def for_language(transcript_list, language) do
+    transcript_list
+    |> Enum.filter(&(&1.language_code == language))
+    |> List.first()
+    |> transcript_found_or_error()
   end
 
   defp url(%{"baseUrl" => url}), do: url
@@ -38,9 +42,7 @@ defmodule Youtex.Transcript do
   defp generated(%{"kind" => kind}), do: kind == "asr"
   defp generated(_caption), do: false
 
-  @spec fetch(String.t | t) :: [Youtex.t]
-  def fetch(transcript) do
-    HttpClient.get(transcript.url)
-    |> TranscriptParser.parse()
-  end
+  defp transcript_found_or_error(nil), do: {:error, :not_found}
+  defp transcript_found_or_error(transcript), do: {:ok, transcript}
+
 end
