@@ -18,13 +18,8 @@ defmodule Youtex.TranscriptParser do
   defp to_transcript(%{"#content" => text, "-start" => start, "-dur" => duration}) do
     {start, _} = Float.parse(start)
     {duration, _} = Float.parse(duration)
-
-    %{
-      text: text,
-      start: start,
-      duration: duration
-    }
+    Youtex.new(text, start, duration)
   end
 
-  defp to_transcript(_other_format), do: %{}
+  defp to_transcript(_other_format), do: nil
 end

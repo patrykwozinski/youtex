@@ -16,6 +16,11 @@ defmodule Youtex do
 
   @default_language "en"
 
+  @spec new(String.t, float, float) :: t
+  def new(text, start, duration) do
+    struct! __MODULE__, text: text, start: start, duration: duration
+  end
+
   @spec list_transcripts(video_id) :: TranscriptList.t
   def list_transcripts(video_id) do
     TranscriptListFetcher.fetch(video_id)
