@@ -1,8 +1,8 @@
 defmodule Youtex.Types do
   @moduledoc false
 
-  alias Youtex.Transcript.Sentence
   alias Youtex.Transcript
+  alias Youtex.Transcript.Sentence
   alias Youtex.Video
 
   defmacro __using__(_opts) do

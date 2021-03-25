@@ -1,4 +1,6 @@
 defmodule Youtex.Transcript.Sentence do
+  @moduledoc false
+
   use Youtex.Types
   use TypedStruct
 
