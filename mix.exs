@@ -33,7 +33,8 @@ defmodule Youtex.MixProject do
       {:poison, "~> 3.1"},
       {:httpoison, "~> 1.8"},
       {:typed_struct, "~> 0.2"},
-      {:dialyxir, "~> 1.1", only: [:dev], runtime: false}
+      {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
     ]
   end
 
