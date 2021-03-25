@@ -38,7 +38,7 @@ Youtex.list_transcripts("lxYFOM3UJzo")
  ]}
 ```
 
-**Youtex.get_transcription(video_id, language \\ "en")**
+**Youtex.get_transcription(video_id, language \\\\ "en")**
 
 ```elixir
 Youtex.get_transcription("lxYFOM3UJzo")
