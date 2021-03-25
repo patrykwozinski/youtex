@@ -1,4 +1,5 @@
 defmodule Youtex.Video do
+  @moduledoc false
 
   @base_url "https://www.youtube.com/watch?v="
 
@@ -13,5 +14,4 @@ defmodule Youtex.Video do
   def new(id) do
     struct! __MODULE__, id: id, url: @base_url <> id
   end
-
 end
