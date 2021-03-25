@@ -4,7 +4,7 @@ defmodule Youtex.MixProject do
   def project do
     [
       app: :youtex,
-      version: "0.1.0",
+      version: "0.2.0",
       name: "YouTex",
       description: "Read and filters transcriptions directly from YouTube channels",
       elixir: "~> 1.11",

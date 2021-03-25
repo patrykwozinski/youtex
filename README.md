@@ -10,7 +10,7 @@ by adding `youtex` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:youtex, "~> 0.1.0"}
+    {:youtex, "~> 0.2.0"}
   ]
 end
 ```
