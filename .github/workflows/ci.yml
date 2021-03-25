@@ -33,7 +33,4 @@ jobs:
       - name: Compile library
         run: mix compile --warnings-as-errors
 
-      - name: Static analysis (dialyzer)
-        run: mix dialyzer
-
       - run: mix test
