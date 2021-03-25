@@ -16,9 +16,6 @@ jobs:
       matrix:
         include:
           - pair:
-              elixir: 1.8.2
-              otp: 20.3.8.26
-          - pair:
               elixir: 1.11.3
               otp: 23.2.5
             lint: lint
@@ -31,14 +28,9 @@ jobs:
           elixir-version: ${{matrix.pair.elixir}}
 
       - name: Install Dependencies
-        run: mix deps.get --only test
+        run: mix deps.get --only test && mix deps.unlock --check-unused
 
-      - run: mix deps.get && mix deps.unlock --check-unused
-        if: ${{ matrix.lint }}
-
-      - run: mix deps.compile
-
-      - run: mix compile --warnings-as-errors
-        if: ${{ matrix.lint }}
+      - name: Compile library
+        run: mix compile --warnings-as-errors
 
       - run: mix test
