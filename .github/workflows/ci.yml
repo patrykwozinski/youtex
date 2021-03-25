@@ -28,9 +28,12 @@ jobs:
           elixir-version: ${{matrix.pair.elixir}}
 
       - name: Install Dependencies
-        run: mix deps.get --only test && mix deps.unlock --check-unused
+        run: mix deps.get --only test
 
       - name: Compile library
         run: mix compile --warnings-as-errors
+
+      - name: Static analysis (dialyzer)
+        run: mix dialyzer
 
       - run: mix test
