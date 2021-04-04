@@ -1,5 +1,7 @@
 defmodule Youtex.Video do
-  @moduledoc false
+  @moduledoc """
+  The module do create and to hold Youtube's video information.
+  """
 
   @base_url "https://www.youtube.com/watch?v="
 

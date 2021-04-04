@@ -1,7 +1,17 @@
 defmodule Youtex.Transcript.Sentence do
-  @moduledoc false
+  @moduledoc """
+  The module to create and to represent the transcript pieces (sentences).
 
-  use Youtex.Types
+  A `Youtext.Transcript` is made of several sentences.
+  A `Sentence` is something like:
+
+      %Youtex.Transcript.Sentence{
+        duration: 2.801,
+        start: 29.679,
+        text: "hi everyone"
+      }
+  """
+
   use TypedStruct
 
   typedstruct enforce: true do
