@@ -1,11 +1,10 @@
-# Youtex
-[![Build Status](https://github.com/patrykwozinski/youtex/workflows/CI/badge.svg)](https://github.com/patrykwozinski/youtex/actions)
+# Youtex [![Build Status](https://github.com/patrykwozinski/youtex/workflows/CI/badge.svg)](https://github.com/patrykwozinski/youtex/actions) [![Hex pm](https://img.shields.io/hexpm/v/youtex.svg?style=flat)](https://hex.pm/packages/youtex)
 
-**TODO: Add description**
+A tool to list or to retrieve video transcriptions from Youtube.
+
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `youtex` to your list of dependencies in `mix.exs`:
+Add `youtex` to the list of dependencies inside `mix.exs`:
 
 ```elixir
 def deps do
@@ -17,7 +16,7 @@ end
 
 ## Usage
 
-There are 2 main methods:
+There are 2 main functions:
 
 **Youtex.list_transcripts(video_id)**
 
@@ -61,9 +60,5 @@ Youtex.get_transcription("lxYFOM3UJzo")
  }}
 ```
 
-If you don't want or don't need to pattern match {:ok, data} or {:error, reason}, there are also [trailing bang](https://hexdocs.pm/elixir/1.11.4/naming-conventions.html#trailing-bang-foo) versions for every one.
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/youtex](https://hexdocs.pm/youtex).
+If you don't need to pattern match `{:ok, data}` and `{:error, reason}`, there are also [trailing bang](https://hexdocs.pm/elixir/1.11.4/naming-conventions.html#trailing-bang-foo) versions for every function.
 
