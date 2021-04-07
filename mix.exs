@@ -1,16 +1,19 @@
 defmodule Youtex.MixProject do
   use Mix.Project
 
+  @version "0.2.0"
+
   def project do
     [
       app: :youtex,
-      version: "0.2.0",
-      name: "YouTex",
-      description: "Read and filters transcriptions directly from YouTube channels",
+      version: @version,
+      name: "Youtex",
+      description: "A tool to list or to retrieve video transcriptions from Youtube",
       elixir: "~> 1.11",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       package: package(),
+      docs: docs(),
       dialyzer: [
         plt_add_deps: :apps_direct,
         plt_add_apps: [],
@@ -35,6 +38,13 @@ defmodule Youtex.MixProject do
       {:typed_struct, "~> 0.2"},
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
+    ]
+  end
+
+  defp docs do
+    [
+      main: "readme",
+      extras: ["README.md"]
     ]
   end
 

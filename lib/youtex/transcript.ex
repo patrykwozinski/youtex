@@ -1,5 +1,25 @@
 defmodule Youtex.Transcript do
-  @moduledoc false
+  @moduledoc """
+  The module to create and to represent the transcript for a language.
+
+  A `Youtext.Transcript` is something like:
+
+      %Youtex.Transcript{
+        generated: false,
+        language_code: "en",
+        name: "Inglês",
+        sentences: [
+          %Youtex.Transcript.Sentence{
+            duration: 9.3,
+            start: 9.53,
+            text: "I remember like my first computer was a Pentium 100 megahertz."
+          },
+          %Youtex.Transcript.Sentence{...},
+          ...
+        ],
+        url: "https://www.youtube.com/api/timedtext..."
+      }
+  """
 
   use Youtex.Types
   use TypedStruct
@@ -12,6 +32,7 @@ defmodule Youtex.Transcript do
     field :sentences, sentence_list, default: []
   end
 
+  @doc false
   @spec new(map) :: t
   def new(caption) do
     %__MODULE__{

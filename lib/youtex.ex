@@ -1,5 +1,7 @@
 defmodule Youtex do
-  @moduledoc false
+  @moduledoc """
+  Main module with functions to list and to retrieve transcriptions.
+  """
 
   use Youtex.Types
 
