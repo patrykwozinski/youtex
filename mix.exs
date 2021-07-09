@@ -33,7 +33,7 @@ defmodule Youtex.MixProject do
     [
       {:elixir_xml_to_map, "~> 2.0"},
       {:ex_doc, "~> 0.24", only: :dev, runtime: false},
-      {:poison, "~> 3.1"},
+      {:poison, "~> 4.0"},
       {:httpoison, "~> 1.8"},
       {:typed_struct, "~> 0.2"},
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
