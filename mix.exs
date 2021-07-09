@@ -32,7 +32,7 @@ defmodule Youtex.MixProject do
   defp deps do
     [
       {:elixir_xml_to_map, "~> 2.0"},
-      {:ex_doc, "~> 0.23", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.24", only: :dev, runtime: false},
       {:poison, "~> 3.1"},
       {:httpoison, "~> 1.8"},
       {:typed_struct, "~> 0.2"},
